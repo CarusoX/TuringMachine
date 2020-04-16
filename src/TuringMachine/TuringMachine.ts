@@ -1,7 +1,7 @@
 // @flow
 
-import { TuringMachineTape } from "./Tape/TuringMachineTape";
-import { TuringMachineInstructions } from "./Instructions/TuringMachineInstructions";
+import { TuringMachineTape } from './Tape/TuringMachineTape';
+import { TuringMachineInstructions } from './Instructions/TuringMachineInstructions';
 
 export class TuringMachine {
 

@@ -8,22 +8,20 @@ export class TuringMachineTape {
   private index: number;
 
   constructor() {
-    this.tape = ""
+    this.tape = '';
     this.index = 0;
   }
 
-  public move(movement: string): void {
+  public move(movement: string): number {
     if (movement === '<') {
       this.index--;
       if (this.index < 0) {
         throw new TuringTapeException('Invalid move: You tried to go left on first cell');
       }
+      return this.index;
     }
-    if (movement === '>') {
-      this.index++;
-    }
-    if (movement === '-') {
-    }
+    if (movement === '>') return this.index++;
+    if (movement === '-') return this.index;
     throw new TuringTapeException(`Movement ${movement} was not understood`);
   }
 
