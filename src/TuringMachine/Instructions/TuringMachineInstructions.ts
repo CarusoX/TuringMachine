@@ -1,5 +1,3 @@
-// @flow
-
 type whereTo = {
   next_state: string,
   replacing_symbol: string,
@@ -14,20 +12,20 @@ export class TuringMachineInstructions {
     }
   };
 
-  public addInstruction(state: string, symbol: string, next_state: string, replacing_symbol: string, movement: string): void {
-    // TODO
+  public addInstruction(
+    state: string,
+    symbol: string,
+    next_state: string,
+    replacing_symbol: string,
+    movement: string
+  ): void {
+    this.instructions[state][symbol] = {
+      next_state, replacing_symbol, movement
+    };
   }
 
-  public getMatchingInstruction(state: string, symbol: string): whereTo {
-    const possibilities = this.instructions[state];
-    let matchingInstruction: whereTo = undefined;
-    Object.entries(possibilities).forEach(([s, whereTo]) => {
-      if (symbol === s && matchingInstruction === undefined) {
-        matchingInstruction = whereTo;
-      }
-      // if (symbol === s && matchingInstruction !== undefined) // BOOM
-    });
-    //  if(matchingInstruction === undefined) // BOOM
-    return matchingInstruction;
+  public getMatchingInstruction(
+    state: string, symbol: string): whereTo | undefined {
+    return this.instructions[state][symbol];
   }
 }

@@ -1,5 +1,3 @@
-// @flow
-
 import { TuringMachineTape } from './Tape/TuringMachineTape';
 import { TuringMachineInstructions } from './Instructions/TuringMachineInstructions';
 
@@ -21,7 +19,9 @@ export class TuringMachine {
 
   public step(): void {
     const token = this.tape.getToken();
-    const instruction = this.instructions.getMatchingInstruction(this.state, token);
+    const instruction = this.instructions.getMatchingInstruction(
+      this.state, token
+    );
     this.tape.setToken(instruction.replacing_symbol);
     this.tape.move(instruction.movement);
     this.state = instruction.next_state;
@@ -36,8 +36,16 @@ export class TuringMachine {
     return preffix + this.state + suffix;
   }
 
-  public addInstruction(state: string, symbol: string, next_state: string, replacing_symbol: string, movement: string): this {
-    this.instructions.addInstruction(state, symbol, next_state, replacing_symbol, movement);
+  public addInstruction(
+    state: string,
+    symbol: string,
+    next_state: string,
+    replacing_symbol: string,
+    movement: string
+  ): this {
+    this.instructions.addInstruction(
+      state, symbol, next_state, replacing_symbol, movement
+    );
     return this;
   }
 }

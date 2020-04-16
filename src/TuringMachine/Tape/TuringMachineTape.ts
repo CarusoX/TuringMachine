@@ -1,6 +1,4 @@
-// @flow
-
-import { TuringTapeException } from './TuringTapeException';
+import { TuringTapeError } from './TuringTapeError';
 
 export class TuringMachineTape {
 
@@ -16,13 +14,15 @@ export class TuringMachineTape {
     if (movement === '<') {
       this.index--;
       if (this.index < 0) {
-        throw new TuringTapeException('Invalid move: You tried to go left on first cell');
+        throw new TuringTapeError(
+          'Invalid move: You tried to go left on first cell'
+        );
       }
       return this.index;
     }
     if (movement === '>') return this.index++;
     if (movement === '-') return this.index;
-    throw new TuringTapeException(`Movement ${movement} was not understood`);
+    throw new TuringTapeError(`Movement ${movement} was not understood`);
   }
 
   public getToken(): string {
@@ -31,7 +31,9 @@ export class TuringMachineTape {
 
   public setToken(token: string): void {
     if (token.length != 1) {
-      throw new TuringTapeException(`You are trying to set a token with length ${token.length}`);
+      throw new TuringTapeError(
+        `You are trying to set a token with length ${token.length}`
+      );
     }
     this.setTokenAt(token, this.index);
   }
@@ -40,7 +42,10 @@ export class TuringMachineTape {
     if (index > this.tape.length - 1) {
       this.tape += token;
     } else {
-      this.tape = this.tape.substr(0, index) + token + this.tape.substr(index + 1);
+      this.tape =
+        this.tape.substr(0, index)
+        + token
+        + this.tape.substr(index + 1);
     }
   }
 

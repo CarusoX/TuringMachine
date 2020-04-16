@@ -1,6 +1,4 @@
-// @flow
-
-export class TuringTapeException extends Error {
+export class TuringTapeError extends Error {
 
   constructor(message: string) {
     super(message);

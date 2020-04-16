@@ -7,7 +7,8 @@ name: string       // The name of your turing machine (You can use some latex co
 initial: string    // The initial state for the turing machine
 accepted: [string] // A list of states in which your input will be accepted by the machine
 
-// Example
+/* Example */
+
 name: My awesome turing machine
 initial: q0
 accepted: qAccepted q10
@@ -20,7 +21,7 @@ By default, the `*` will match any symbol being read by the turing machine, but 
 ```javascript
 symbol := [string] // A symbol can represent various other symbols
 
-// Examples
+/* Examples */
 
 + := a b
 
@@ -38,7 +39,7 @@ and move left **(<)**, right **(>)** or keep place **(-)**_
 ```javascript
 state symbol => next_state replacing_symbol movement
 
-// Examples
+/* Examples */
 
 q1 a => q1 b > // if in state q1 reading 'a', replace it by b, go to state q1, and move right
 
@@ -54,11 +55,11 @@ _If symbol and replacing_symbol are equal, you can obviate writing it_
 ```javascript
 state symbol => next_state movement
 
-// Examples
+/* Examples */
 
 q3 + => q4 > // if in state q3, reading 'a' or 'b' (see above definition), leave it, go to q4, and move right 
 
-q4 _ => q4 _ - // if in state q4, reading blank, leave it, keep q4 state, and don't move
+q4 _ => q4 - // if in state q4, reading blank, leave it, keep q4 state, and don't move
 ```
 
 
