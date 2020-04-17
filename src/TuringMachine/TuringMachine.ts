@@ -1,21 +1,14 @@
 import { TuringMachineTape } from './Tape/TuringMachineTape';
-import {
-  TuringMachineInstructions,
-} from './Instructions/TuringMachineInstructions';
+import { TuringMachineInstructions } from './Instructions/TuringMachineInstructions';
 
 export class TuringMachine {
-
   private name: string;
   private state: string;
   private qAccepted: Array<string>;
   private tape: TuringMachineTape;
   private instructions: TuringMachineInstructions;
 
-  constructor(
-    name: string,
-    q0: string,
-    qAccepted: Array<string>,
-  ) {
+  constructor(name: string, q0: string, qAccepted: Array<string>) {
     this.name = name;
     this.state = q0;
     this.qAccepted = qAccepted;
@@ -26,7 +19,8 @@ export class TuringMachine {
   public step(): void {
     const token = this.tape.getToken();
     const instruction = this.instructions.getMatchingInstruction(
-      this.state, token
+      this.state,
+      token,
     );
     this.tape.setToken(instruction.replacing_symbol);
     this.tape.move(instruction.movement);
@@ -47,10 +41,14 @@ export class TuringMachine {
     symbol: string,
     next_state: string,
     replacing_symbol: string,
-    movement: string
+    movement: string,
   ): this {
     this.instructions.addInstruction(
-      state, symbol, next_state, replacing_symbol, movement
+      state,
+      symbol,
+      next_state,
+      replacing_symbol,
+      movement,
     );
     return this;
   }

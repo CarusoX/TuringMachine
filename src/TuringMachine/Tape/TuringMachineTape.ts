@@ -1,7 +1,6 @@
 import { TuringTapeError } from './TuringTapeError';
 
 export class TuringMachineTape {
-
   private tape: string;
   private index: number;
 
@@ -15,7 +14,7 @@ export class TuringMachineTape {
       this.index--;
       if (this.index < 0) {
         throw new TuringTapeError(
-          'Invalid move: You tried to go left on first cell'
+          'Invalid move: You tried to go left on first cell',
         );
       }
       return this.index;
@@ -32,7 +31,7 @@ export class TuringMachineTape {
   public setToken(token: string): void {
     if (token.length != 1) {
       throw new TuringTapeError(
-        `You are trying to set a token with length ${token.length}`
+        `You are trying to set a token with length ${token.length}`,
       );
     }
     this.setTokenAt(token, this.index);
@@ -43,9 +42,7 @@ export class TuringMachineTape {
       this.tape += token;
     } else {
       this.tape =
-        this.tape.substr(0, index)
-        + token
-        + this.tape.substr(index + 1);
+        this.tape.substr(0, index) + token + this.tape.substr(index + 1);
     }
   }
 

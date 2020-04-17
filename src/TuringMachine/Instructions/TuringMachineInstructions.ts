@@ -1,15 +1,14 @@
 type whereTo = {
-  next_state: string,
-  replacing_symbol: string,
-  movement: string
+  next_state: string;
+  replacing_symbol: string;
+  movement: string;
 };
 
 export class TuringMachineInstructions {
-
   private instructions: {
     [state: string]: {
-      [symbol: string]: whereTo
-    }
+      [symbol: string]: whereTo;
+    };
   } = {};
 
   public addInstruction(
@@ -17,10 +16,12 @@ export class TuringMachineInstructions {
     symbol: string,
     next_state: string,
     replacing_symbol: string,
-    movement: string
+    movement: string,
   ): void {
     this.instructions[state][symbol] = {
-      next_state, replacing_symbol, movement
+      next_state,
+      replacing_symbol,
+      movement,
     };
   }
 
