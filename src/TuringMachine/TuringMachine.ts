@@ -1,18 +1,24 @@
 import { TuringMachineTape } from './Tape/TuringMachineTape';
-import { TuringMachineInstructions } from './Instructions/TuringMachineInstructions';
+import {
+  TuringMachineInstructions,
+} from './Instructions/TuringMachineInstructions';
 
 export class TuringMachine {
 
+  private name: string;
+  private state: string;
+  private qAccepted: Array<string>;
   private tape: TuringMachineTape;
   private instructions: TuringMachineInstructions;
 
-  private state: string;
-
   constructor(
-    private name: string,
-    private q0: string,
-    private qAccepted: Array<string>
+    name: string,
+    q0: string,
+    qAccepted: Array<string>,
   ) {
+    this.name = name;
+    this.state = q0;
+    this.qAccepted = qAccepted;
     this.tape = new TuringMachineTape();
     this.instructions = new TuringMachineInstructions();
   }

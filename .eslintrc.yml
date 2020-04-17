@@ -30,7 +30,6 @@ rules:
   semi:
     - error
     - always
-  max-len: 
+  max-len:
     - error
     - 80
-    - ignoreImports: true

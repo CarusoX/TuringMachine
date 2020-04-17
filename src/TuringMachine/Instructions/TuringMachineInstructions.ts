@@ -10,7 +10,7 @@ export class TuringMachineInstructions {
     [state: string]: {
       [symbol: string]: whereTo
     }
-  };
+  } = {};
 
   public addInstruction(
     state: string,
@@ -24,8 +24,11 @@ export class TuringMachineInstructions {
     };
   }
 
-  public getMatchingInstruction(
-    state: string, symbol: string): whereTo | undefined {
-    return this.instructions[state][symbol];
+  public getMatchingInstruction(state: string, symbol: string): whereTo {
+    const whereTo = this.instructions[state][symbol];
+    if (whereTo === undefined) {
+      // Todo
+    }
+    return whereTo;
   }
 }
